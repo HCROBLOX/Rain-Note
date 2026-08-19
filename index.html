@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rain Note - Ghi chú online</title>
+    <meta name="description" content="Rain Note là trình ghi chú online đẹp, nhanh, tự động lưu và dễ chia sẻ." />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Điều hướng chính">
+        <a class="brand" href="#">
+          <span class="brand-mark"><i class="fa-solid fa-cloud-rain"></i></span>
+          <span>Rain Note</span>
+        </a>
+        <div class="nav-links">
+          <a href="#features">Tính năng</a>
+          <a href="#workspace">Ghi chú</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <a class="btn btn-ghost" href="#workspace"><i class="fa-solid fa-pen-nib"></i> Viết ngay</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero shell">
+        <div class="hero-copy">
+          <p class="eyebrow"><i class="fa-solid fa-bolt"></i> Ghi chú nhanh, chia sẻ dễ dàng</p>
+          <h1>Online Notepad hiện đại cho ý tưởng, checklist và nội dung của bạn.</h1>
+          <p class="hero-text">Lấy cảm hứng từ aNotepad nhưng được tinh chỉnh với giao diện chuyên nghiệp hơn: bố cục rõ ràng, thao tác nhanh, tự động lưu trên trình duyệt và công cụ chia sẻ tiện lợi.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#workspace"><i class="fa-solid fa-plus"></i> Tạo ghi chú mới</a>
+            <a class="btn btn-secondary" href="#features"><i class="fa-solid fa-circle-info"></i> Xem tính năng</a>
+          </div>
+          <div class="stats" aria-label="Điểm nổi bật">
+            <div><strong>Auto</strong><span>Lưu tức thì</span></div>
+            <div><strong>6+</strong><span>Công cụ note</span></div>
+            <div><strong>0đ</strong><span>Dùng miễn phí</span></div>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Xem trước ứng dụng ghi chú">
+          <div class="browser-dots"><span></span><span></span><span></span></div>
+          <div class="mini-toolbar">
+            <button><i class="fa-solid fa-bold"></i></button>
+            <button><i class="fa-solid fa-list-check"></i></button>
+            <button><i class="fa-solid fa-link"></i></button>
+            <button><i class="fa-solid fa-download"></i></button>
+          </div>
+          <h3>Kế hoạch hôm nay</h3>
+          <p>• Viết brief dự án Rain Note<br />• Gửi link chia sẻ cho team<br />• Xuất ghi chú quan trọng</p>
+        </aside>
+      </section>
+
+      <section id="workspace" class="workspace shell">
+        <div class="editor-panel">
+          <div class="panel-top">
+            <div>
+              <p class="section-label">Không gian viết</p>
+              <h2>Ghi chú của bạn</h2>
+            </div>
+            <div class="save-state" id="saveState"><i class="fa-solid fa-check"></i> Đã lưu</div>
+          </div>
+
+          <label class="field-label" for="noteTitle">Tiêu đề</label>
+          <input id="noteTitle" class="title-input" type="text" placeholder="Nhập tiêu đề ghi chú..." />
+
+          <div class="tool-grid" aria-label="Loại ghi chú">
+            <button class="tool active"><i class="fa-regular fa-file-lines"></i> Plain Text</button>
+            <button class="tool"><i class="fa-solid fa-wand-magic-sparkles"></i> Rich Text</button>
+            <button class="tool"><i class="fa-brands fa-markdown"></i> Markdown</button>
+            <button class="tool"><i class="fa-solid fa-square-check"></i> Task List</button>
+            <button class="tool"><i class="fa-solid fa-paperclip"></i> Bookmark</button>
+            <button class="tool"><i class="fa-solid fa-share-nodes"></i> Share</button>
+          </div>
+
+          <label class="field-label" for="noteBody">Nội dung</label>
+          <textarea id="noteBody" placeholder="Bắt đầu viết ghi chú của bạn tại đây..."></textarea>
+
+          <div class="editor-actions">
+            <button class="btn btn-primary" id="saveBtn"><i class="fa-solid fa-floppy-disk"></i> Lưu ghi chú</button>
+            <button class="btn btn-secondary" id="copyBtn"><i class="fa-solid fa-copy"></i> Copy nội dung</button>
+            <button class="btn btn-danger" id="clearBtn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+          </div>
+        </div>
+
+        <aside class="side-panel">
+          <div class="share-card">
+            <i class="fa-solid fa-lock"></i>
+            <h3>Quyền riêng tư</h3>
+            <p>Chọn cách hiển thị trước khi chia sẻ ghi chú.</p>
+            <select aria-label="Quyền đọc ghi chú">
+              <option>Public Note</option>
+              <option>Private Note</option>
+              <option>Password Protected</option>
+            </select>
+          </div>
+          <div class="notes-card">
+            <div class="card-heading"><h3>My Saved Notes</h3><i class="fa-solid fa-folder-open"></i></div>
+            <ul id="savedNotes"></ul>
+          </div>
+        </aside>
+      </section>
+
+      <section id="features" class="features shell">
+        <p class="section-label">Tất cả trong một</p>
+        <h2>Mọi thứ bạn cần để ghi chú online</h2>
+        <div class="feature-grid">
+          <article><i class="fa-solid fa-cloud-arrow-up"></i><h3>Autosave</h3><p>Tự động lưu vào trình duyệt khi bạn nhập, giảm rủi ro mất dữ liệu.</p></article>
+          <article><i class="fa-solid fa-link"></i><h3>Chia sẻ nhanh</h3><p>Chuẩn bị trải nghiệm chia sẻ note bằng link với bố cục chuyên nghiệp.</p></article>
+          <article><i class="fa-solid fa-shield-halved"></i><h3>Riêng tư</h3><p>Giao diện quyền đọc public, private hoặc bảo vệ bằng mật khẩu.</p></article>
+          <article><i class="fa-solid fa-file-export"></i><h3>Xuất nội dung</h3><p>Copy nhanh nội dung để gửi email, lưu tài liệu hoặc chia sẻ với đội nhóm.</p></article>
+        </div>
+      </section>
+
+      <section id="faq" class="faq shell">
+        <h2>Câu hỏi thường gặp</h2>
+        <details open><summary>Rain Note có cần đăng ký không?</summary><p>Không. Bạn có thể viết ngay và dữ liệu được lưu cục bộ trên trình duyệt.</p></details>
+        <details><summary>Ứng dụng có dùng Font Awesome không?</summary><p>Có. Toàn bộ icon trong giao diện được dùng từ Font Awesome qua CDN.</p></details>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-inner">
+        <p>© 2026 Rain Note. Made for focused writing.</p>
+        <div><i class="fa-brands fa-github"></i><i class="fa-brands fa-facebook"></i><i class="fa-brands fa-x-twitter"></i></div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
