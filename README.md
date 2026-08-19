@@ -1,144 +1,280 @@
-diff --git a/README.md b/README.md
-index a42497239e1e069520fa24c3d1bbd720dbf10b39..85c78f0abab3e68d8220911f6b7589cbbc1638ee 100644
---- a/README.md
-+++ b/README.md
-@@ -1,2 +1,137 @@
--# Rain-Note
--Lưu lại những văn bản của bạn và chia sẻ nó
-+<div align="center">
-+
-+# 🌧️ Rain Note
-+
-+### Trình ghi chú online hiện đại, nhẹ, đẹp và dễ chia sẻ
-+
-+Rain Note là một ứng dụng ghi chú trên trình duyệt lấy cảm hứng từ trải nghiệm viết nhanh của các online notepad, nhưng được thiết kế lại theo phong cách chuyên nghiệp hơn: giao diện sạch, thao tác mượt, hỗ trợ Font Awesome icon và lưu nội dung ngay trên thiết bị của bạn.
-+
-+[![Status](https://img.shields.io/badge/status-active-22c55e?style=for-the-badge)](#)
-+[![Made with](https://img.shields.io/badge/made%20with-HTML%20%7C%20CSS%20%7C%20JavaScript-2563eb?style=for-the-badge)](#)
-+[![Icons](https://img.shields.io/badge/icons-Font%20Awesome-06b6d4?style=for-the-badge)](#)
-+
-+</div>
-+
-+---
-+
-+## ✨ Tổng quan
-+
-+**Rain Note** giúp bạn ghi lại ý tưởng, nội dung nháp, checklist, đường link hoặc ghi chú cá nhân chỉ trong vài giây. Dự án tập trung vào trải nghiệm **nhanh - rõ ràng - đẹp - dễ mở rộng**, phù hợp để phát triển tiếp thành một nền tảng ghi chú online hoàn chỉnh.
-+
-+> Mục tiêu: tạo một không gian viết tối giản như notepad online, nhưng có cảm giác cao cấp hơn, thân thiện hơn và chuyên nghiệp hơn.
-+
-+---
-+
-+## 🚀 Tính năng nổi bật
-+
-+| Tính năng | Mô tả |
-+| --- | --- |
-+| 📝 **Editor trực quan** | Khu vực nhập tiêu đề và nội dung rõ ràng, dễ sử dụng. |
-+| 💾 **Autosave cục bộ** | Tự động lưu ghi chú vào `localStorage` trên trình duyệt. |
-+| 📋 **Copy nhanh** | Sao chép toàn bộ ghi chú chỉ bằng một nút bấm. |
-+| 🧹 **Xóa nhanh** | Làm sạch nội dung và trạng thái lưu khi cần bắt đầu lại. |
-+| 🔐 **Privacy UI** | Có giao diện lựa chọn Public, Private hoặc Password Protected. |
-+| 🎨 **Giao diện responsive** | Hiển thị tốt trên desktop, tablet và mobile. |
-+| ⭐ **Font Awesome icons** | Sử dụng hệ icon chuyên nghiệp để tăng tính nhận diện và độ hoàn thiện. |
-+
-+---
-+
-+## 🖼️ Giao diện
-+
-+Rain Note được thiết kế với các thành phần chính:
-+
-+- **Header sticky** với logo Rain Note và điều hướng nhanh.
-+- **Hero section** giới thiệu sản phẩm cùng CTA nổi bật.
-+- **Workspace editor** gồm tiêu đề, nội dung, loại ghi chú và nút thao tác.
-+- **Side panel** cho quyền riêng tư và danh sách ghi chú đã lưu.
-+- **Feature cards** trình bày các điểm mạnh của ứng dụng.
-+- **FAQ section** giúp người dùng hiểu nhanh cách sử dụng.
-+
-+---
-+
-+## 🧱 Công nghệ sử dụng
-+
-+```text
-+HTML5        Semantic structure
-+CSS3         Responsive UI, gradients, cards, transitions
-+JavaScript   Autosave, copy, clear, localStorage
-+Font Awesome Professional icon system via CDN
-+```
-+
-+---
-+
-+## 📂 Cấu trúc dự án
-+
-+```text
-+Rain-Note/
-+├── index.html    # Markup chính của ứng dụng
-+├── styles.css    # Toàn bộ giao diện và responsive layout
-+├── script.js     # Logic lưu, copy, xóa và render ghi chú
-+└── README.md     # Tài liệu dự án
-+```
-+
-+---
-+
-+## ⚡ Chạy dự án trên máy local
-+
-+Bạn không cần cài framework hoặc build tool. Chỉ cần clone repo và mở file HTML.
-+
-+```bash
-+git clone https://github.com/HCROBLOX/Rain-Note.git
-+cd Rain-Note
-+```
-+
-+### Cách 1: Mở trực tiếp
-+
-+Mở file `index.html` bằng trình duyệt bất kỳ.
-+
-+### Cách 2: Chạy bằng local server
-+
-+```bash
-+python3 -m http.server 4173
-+```
-+
-+Sau đó truy cập:
-+
-+```text
-+http://localhost:4173
-+```
-+
-+---
-+
-+## 🧭 Hướng phát triển tiếp theo
-+
-+- [ ] Thêm hệ thống tài khoản người dùng.
-+- [ ] Đồng bộ ghi chú lên cloud/database.
-+- [ ] Tạo link chia sẻ public cho từng ghi chú.
-+- [ ] Hỗ trợ Markdown preview.
-+- [ ] Thêm chế độ Dark Mode.
-+- [ ] Cho phép xuất ghi chú sang `.txt`, `.md` hoặc PDF.
-+- [ ] Thêm tìm kiếm và phân loại ghi chú theo tag.
-+
-+---
-+
-+## 🤝 Đóng góp
-+
-+Mọi ý tưởng cải tiến đều được chào đón. Bạn có thể:
-+
-+1. Fork repository.
-+2. Tạo branch mới cho tính năng hoặc sửa lỗi.
-+3. Commit thay đổi với mô tả rõ ràng.
-+4. Mở Pull Request để thảo luận và review.
-+
-+---
-+
-+## 📄 License
-+
-+Dự án hiện chưa khai báo license cụ thể. Nếu bạn muốn sử dụng lại mã nguồn cho sản phẩm riêng, hãy kiểm tra hoặc bổ sung license phù hợp trước khi phát hành.
-+
-+---
-+
-+<div align="center">
-+
-+**Rain Note — Write faster. Save smarter. Share easier.**
-+
-+Made with 💙 for creators, students and builders.
-+
-+</div>
+# 🌧️ Rain Note
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/HCROBLOX/Rain-Note/main/assets/logo.png" width="110" alt="Rain Note">
+</p>
+
+<h1 align="center">🌧️ Rain Note</h1>
+
+<p align="center">
+  <strong>Trang ghi chú trực tuyến đơn giản, nhanh và hiện đại.</strong>
+</p>
+
+<p align="center">
+  Ghi lại những điều bạn cần — mọi lúc, mọi nơi.
+</p>
+
+<p align="center">
+  <a href="https://hcroblox.github.io/Rain-Note/">
+    🌐 Mở Rain Note
+  </a>
+  &nbsp;&nbsp;•&nbsp;&nbsp;
+  <a href="https://github.com/HCROBLOX/Rain-Note">
+    📂 Kho mã nguồn
+  </a>
+</p>
+
+---
+
+<p align="center">
+  <img src="assets/demo.gif" width="90%" alt="Rain Note">
+</p>
+
+---
+
+## 🌧️ Rain Note là gì?
+
+**Rain Note** là một trang web ghi chú được tạo ra để giúp việc ghi lại nội dung trở nên **nhanh chóng và thuận tiện**.
+
+Thay vì phải cài đặt một ứng dụng riêng, bạn chỉ cần mở Rain Note trên trình duyệt và bắt đầu viết.
+
+Giao diện được thiết kế theo phong cách **tối, hiện đại và gọn gàng**, giúp người dùng tập trung vào nội dung thay vì những thành phần không cần thiết.
+
+> 📝 **Mở trang → viết nội dung → lưu lại.**
+
+Đơn giản như vậy.
+
+---
+
+## ✨ Tính năng
+
+### 📝 Ghi chú
+
+* Tạo nội dung ghi chú nhanh chóng.
+* Soạn thảo trực tiếp trên trang.
+* Giao diện tập trung vào nội dung.
+* Dễ dàng chỉnh sửa khi cần.
+
+### 🎨 Giao diện
+
+* 🌧️ Phong cách Rain đặc trưng.
+* 🌌 Tông màu tối hiện đại.
+* ✨ Hiệu ứng chuyển động nhẹ.
+* 💠 Các thành phần được thiết kế gọn gàng.
+* 📱 Tương thích với màn hình điện thoại.
+
+### ⚡ Trải nghiệm
+
+* 🚀 Mở trang nhanh.
+* 📱 Có thể sử dụng trên điện thoại.
+* 💻 Có thể sử dụng trên máy tính.
+* 🖥️ Hiển thị tốt trên nhiều kích thước màn hình.
+* 🧹 Không có quá nhiều thành phần gây rối.
+
+---
+
+## 🖼️ Hình ảnh
+
+### 🏠 Trang chính
+
+<p align="center">
+  <img src="assets/home.png" width="92%" alt="Trang chính Rain Note">
+</p>
+
+---
+
+### 📝 Khu vực ghi chú
+
+<p align="center">
+  <img src="assets/note.png" width="92%" alt="Khu vực ghi chú Rain Note">
+</p>
+
+---
+
+### 📱 Trên điện thoại
+
+<p align="center">
+  <img src="assets/mobile.png" width="45%" alt="Rain Note trên điện thoại">
+</p>
+
+---
+
+## 🎬 Xem Rain Note hoạt động
+
+<p align="center">
+  <img src="assets/demo.gif" width="90%" alt="Rain Note hoạt động">
+</p>
+
+---
+
+## 📱 Sử dụng trên điện thoại
+
+Rain Note được thiết kế để có thể sử dụng thuận tiện trên điện thoại.
+
+Bạn có thể:
+
+* Mở Rain Note bằng trình duyệt.
+* Viết ghi chú bằng bàn phím điện thoại.
+* Chỉnh sửa nội dung trực tiếp.
+* Sử dụng ở chế độ dọc hoặc ngang.
+
+Không cần cài đặt ứng dụng riêng.
+
+---
+
+## 🌐 Sử dụng Rain Note
+
+Bạn có thể truy cập Rain Note tại:
+
+<p align="center">
+
+<a href="https://hcroblox.github.io/Rain-Note/">
+  <img src="https://img.shields.io/badge/🌧️%20MỞ%20RAIN%20NOTE-38BDF8?style=for-the-badge" alt="Mở Rain Note">
+</a>
+
+</p>
+
+Hoặc truy cập trực tiếp:
+
+**https://hcroblox.github.io/Rain-Note/**
+
+---
+
+## 🛠️ Công nghệ
+
+Rain Note được xây dựng bằng những công nghệ web cơ bản:
+
+| Công nghệ       | Mục đích                       |
+| --------------- | ------------------------------ |
+| 🟧 HTML         | Xây dựng cấu trúc trang        |
+| 🟦 CSS          | Thiết kế giao diện và hiệu ứng |
+| 🟨 JavaScript   | Xử lý chức năng                |
+| 🟪 GitHub Pages | Đưa trang web lên mạng         |
+
+---
+
+## 🚀 Chạy Rain Note trên máy
+
+Nếu muốn chạy dự án trên máy của bạn:
+
+```bash
+git clone https://github.com/HCROBLOX/Rain-Note.git
+```
+
+Sau đó mở thư mục dự án và chạy tệp:
+
+```text
+index.html
+```
+
+trên trình duyệt.
+
+---
+
+## 🌐 Đưa lên GitHub Pages
+
+Rain Note có thể được đưa lên GitHub Pages để trở thành một trang web trực tuyến.
+
+Kho mã nguồn:
+
+```text
+https://github.com/HCROBLOX/Rain-Note
+```
+
+Trang web:
+
+```text
+https://hcroblox.github.io/Rain-Note/
+```
+
+---
+
+## 🔮 Dự định phát triển
+
+Rain Note có thể được bổ sung thêm nhiều chức năng trong tương lai:
+
+* [ ] 💾 Tự động lưu nội dung
+* [ ] 🔐 Khóa ghi chú
+* [ ] 🗑️ Thùng rác
+* [ ] 🔎 Tìm kiếm ghi chú
+* [ ] 🏷️ Phân loại ghi chú
+* [ ] 📥 Tải ghi chú về máy
+* [ ] 🔗 Chia sẻ ghi chú bằng liên kết
+* [ ] ☁️ Đồng bộ dữ liệu
+* [ ] 👤 Tài khoản người dùng
+* [ ] 🌗 Chế độ sáng
+* [ ] 🎨 Thêm giao diện
+* [ ] 📱 Cải thiện trải nghiệm trên điện thoại
+
+---
+
+## 🌧️ Rain Project
+
+**Rain Note** là một phần trong các dự án mang thương hiệu **Rain**.
+
+```text
+                 🌧️ RAIN
+                    │
+       ┌────────────┼────────────┐
+       │            │            │
+   📝 Note       📤 Share      📧 Mail
+       │            │            │
+       └────────────┼────────────┘
+                    │
+                🔑 Key
+```
+
+Mục tiêu của Rain Project là tạo ra những sản phẩm nhỏ gọn, dễ sử dụng và có giao diện riêng biệt.
+
+---
+
+## 💙 Ủng hộ dự án
+
+Nếu bạn thích Rain Note, bạn có thể:
+
+⭐ Đánh dấu sao cho kho mã nguồn.
+
+🐛 Báo lỗi nếu phát hiện vấn đề.
+
+💡 Đề xuất những chức năng mới.
+
+📢 Chia sẻ Rain Note với bạn bè.
+
+<p align="center">
+  <a href="https://github.com/HCROBLOX/Rain-Note">
+    <img src="https://img.shields.io/github/stars/HCROBLOX/Rain-Note?style=for-the-badge&logo=github" alt="Số sao">
+  </a>
+  <a href="https://github.com/HCROBLOX/Rain-Note">
+    <img src="https://img.shields.io/github/forks/HCROBLOX/Rain-Note?style=for-the-badge&logo=github" alt="Số lượt sao chép">
+  </a>
+</p>
+
+---
+
+## 📜 Bản quyền
+
+Rain Note © 2026 **HCROBLOX**.
+
+Vui lòng xem tệp `LICENSE` trong kho mã nguồn để biết các điều khoản sử dụng và phân phối.
+
+---
+
+<p align="center">
+  <img src="assets/logo.png" width="70" alt="Rain">
+</p>
+
+<h2 align="center">🌧️ Rain Note</h2>
+
+<p align="center">
+  <i>Ghi chú đơn giản. Trải nghiệm nhẹ nhàng.</i>
+</p>
+
+<p align="center">
+  <a href="https://hcroblox.github.io/Rain-Note/">🌐 Trang web</a>
+  &nbsp; • &nbsp;
+  <a href="https://github.com/HCROBLOX/Rain-Note">📂 GitHub</a>
+</p>
+
+<p align="center">
+  Made with 🌧️ by <b>HCROBLOX</b>
+</p>
