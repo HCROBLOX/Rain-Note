@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO CHUẨN -->
+    <title>Trình Ghi Chú Trực Tuyến Miễn Phí | Viết & Chia Sẻ Theo Nhánh</title>
+    <meta name="description" content="Trình ghi chú trực tuyến miễn phí, không cần tài khoản. Viết, lưu trữ, quản lý theo nhánh và chia sẻ bằng link riêng. Tự động lưu, hỗ trợ xuất/nhập dữ liệu, hoạt động trên mọi thiết bị.">
+    <meta name="keywords" content="ghi chú trực tuyến, sổ tay online, trình soạn thảo văn bản, chia sẻ ghi chú theo nhánh, công cụ viết miễn phí, lưu trữ cục bộ">
+    <meta name="author" content="Rain Studio">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Mạng Xã Hội & Structured Data -->
+    <meta property="og:title" content="Trình Ghi Chú Trực Tuyến - Viết & Chia Sẻ Theo Nhánh">
+    <meta property="og:description" content="Công cụ ghi chú hoàn toàn miễn phí, chạy trên trình duyệt, tự động lưu, tạo link chia sẻ riêng cho từng nhánh nội dung.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="vi_VN">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Trình Ghi Chú Trực Tuyến",
+        "description": "Công cụ ghi chú miễn phí, quản lý theo nhánh, chia sẻ link riêng",
+        "url": window.location.href,
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Tất cả (Windows, macOS, Android, iOS)",
+        "author": {"@type": "Organization", "name": "Rain Studio"}
+    }
+    </script>
+
+    <!-- Tài nguyên -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === CƠ BẢN & TỐI ƯU HIỆU NĂNG === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --purple: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --card: #ffffff;
+            --text: #334155;
+            --border: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.03);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.6;
+            will-change: opacity;
+        }
+
+        /* === LOGO === */
+        .logo-wrap {
+            text-align: center;
+            padding: 20px 0 10px;
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--dark);
+        }
+        .logo-img {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            animation: logoFloat 3.5s infinite ease-in-out;
+            will-change: transform;
+        }
+        @keyframes logoFloat {
+            0%,100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(3deg); }
+        }
+        .logo:hover .logo-img {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 15px 30px rgba(37,99,235,0.2);
+        }
+        .logo-text h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+        .logo-text p {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        /* === HIỆU ỨNG NỀN === */
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.08);
+            animation: float 15s infinite ease-in-out;
+            will-change: transform;
+        }
+        .circle:nth-child(1) {
+            width: 400px; height: 400px;
+            top: -100px; right: -100px;
+            animation-delay: 0s;
+        }
+        .circle:nth-child(2) {
+            width: 300px; height: 300px;
+            bottom: -80px; left: -80px;
+            animation-delay: -5s;
+            background: rgba(16, 185, 129, 0.08);
+        }
+        @keyframes float {
+            0%,100% { transform: translate(0,0) rotate(0deg); }
+            33% { transform: translate(30px,-30px) rotate(5deg); }
+            66% { transform: translate(-20px,20px) rotate(-5deg); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes blink {
+            0%,100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* === KHUNG CHÍNH === */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px 40px;
+        }
+
+        header.page-header {
+            text-align: center;
+            margin-bottom: 25px;
+            animation: fadeIn 0.8s ease-out 0.1s both;
+        }
+        header.page-header h2 {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+        header.page-header p {
+            color: #64748b;
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* === KHUNG GHI CHÚ === */
+        .note-wrapper {
+            background: var(--card);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transform: translateY(0);
+            transition: var(--transition);
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out;
+            will-change: transform, box-shadow;
+        }
+        .note-wrapper:focus-within {
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        /* === THANH CÔNG CỤ === */
+        .toolbar-group {
+            background: linear-gradient(90deg, #f8fafc, #f1f5f9);
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .toolbar-group .group-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin-right: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .toolbar {
+            background: transparent;
+            padding: 0;
+            border: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .toolbar button, .toolbar select, .toolbar input[type="file"] {
+            padding: 8px 14px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text);
+            will-change: transform;
+        }
+        .toolbar button:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37,99,235,0.25);
+        }
+        .toolbar button:active { transform: translateY(0); }
+        .toolbar .btn-success:hover { background: var(--success); border-color: var(--success); box-shadow: 0 4px 12px rgba(16,185,129,0.25); }
+        .toolbar .btn-danger:hover { background: var(--danger); border-color: var(--danger); box-shadow: 0 4px 12px rgba(239,68,68,0.25); }
+        .toolbar .btn-share:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 4px 12px rgba(139,92,246,0.25); }
+        .toolbar .btn-import { position: relative; overflow: hidden; }
+        .toolbar .btn-import input {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; cursor: pointer;
+        }
+
+        /* === KHU VỰC NHẬP === */
+        .note-area {
+            padding: 25px;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0,0,0,0);
+            white-space: nowrap; border-width: 0;
+        }
+        #note-title {
+            width: 100%;
+            font-size: 1.6rem;
+            font-weight: 600;
+            border: none;
+            border-bottom: 2px solid transparent;
+            padding: 12px 0;
+            margin-bottom: 20px;
+            outline: none;
+            transition: var(--transition);
+            background: transparent;
+            font-family: inherit;
+        }
+        #note-title:focus { border-bottom-color: var(--primary); }
+        #note-content {
+            width: 100%;
+            min-height: 350px;
+            border: none;
+            outline: none;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            resize: vertical;
+            background: transparent;
+            font-family: inherit;
+        }
+        #note-content::placeholder { color: #94a3b8; }
+
+        /* === TRẠNG THÁI === */
+        .status-bar {
+            padding: 12px 25px;
+            background: #fafafa;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #64748b;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .status-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: blink 1.5s infinite;
+        }
+
+        /* === MODAL CHIA SẺ === */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            animation: fadeIn 0.3s ease;
+            will-change: opacity;
+        }
+        .modal {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 550px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(0);
+            animation: modalIn 0.3s ease;
+            will-change: transform;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .modal-header h3 { font-size: 1.4rem; display: flex; align-items: center; gap: 8px; }
+        .modal-close {
+            background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #94a3b8;
+            transition: var(--transition);
+            will-change: transform;
+        }
+        .modal-close:hover { color: var(--danger); transform: rotate(90deg); }
+        .share-block { margin-bottom: 20px; }
+        .share-label { font-size: 0.9rem; color: #64748b; margin-bottom: 8px; display: block; }
+        .share-link-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .share-link-group input {
+            flex: 1; padding: 12px 15px; border: 1px solid var(--border); border-radius: 8px;
+            font-size: 0.85rem; min-width: 220px; background: #fafafa; word-break: break-all;
+            font-family: inherit;
+        }
+        .share-link-group button {
+            padding: 12px 20px; border: none; background: var(--purple); color: white;
+            border-radius: 8px; cursor: pointer; transition: var(--transition);
+            display: inline-flex; align-items: center; gap: 6px;
+            will-change: transform;
+        }
+        .share-link-group button:hover { background: #7c3aed; transform: translateY(-2px); }
+        .note-info {
+            padding: 12px; background: #f8fafc; border-radius: 8px; border-left: 3px solid var(--purple);
+            font-size: 0.9rem; color: #475569;
+        }
+        .modal-note {
+            font-size: 0.8rem; color: #94a3b8; margin-top: 10px;
+        }
+
+        /* === DANH SÁCH NHÁNH === */
+        .notes-list-container {
+            background: white; border-radius: 20px; padding: 25px; box-shadow: var(--shadow);
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+        .list-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border);
+        }
+        .list-header h2 { font-size: 1.4rem; display: flex; align-items: center; gap: 8px; }
+        .note-item {
+            padding: 18px; border: 1px solid var(--border); border-radius: 12px;
+            margin-bottom: 12px; transition: var(--transition); background: white; position: relative; overflow: hidden;
+            will-change: transform;
+        }
+        .note-item::before {
+            content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 4px;
+            background: var(--primary); transform: scaleY(0); transition: var(--transition);
+        }
+        .note-item:hover { transform: translateX(8px); border-color: var(--primary); box-shadow: -4px 0 15px rgba(37,99,235,0.1); }
+        .note-item:hover::before { transform: scaleY(1); }
+        .note-item.active { border-color: var(--primary); background: rgba(37,99,235,0.03); }
+        .note-main { cursor: pointer; margin-bottom: 10px; }
+        .note-item h3 {
+            font-size: 1.1rem; margin-bottom: 6px; color: var(--dark);
+            display: flex; align-items: center; gap: 6px;
+        }
+        .note-item p { color: #64748b; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .note-meta {
+            font-size: 0.8rem; color: #94a3b8; display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 8px;
+        }
+        .note-actions { display: flex; gap: 6px; }
+        .note-actions button {
+            padding: 5px 10px; font-size: 0.8rem; border: 1px solid var(--border); background: white;
+            border-radius: 6px; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; gap: 4px;
+            will-change: transform;
+        }
+        .note-actions button:hover { background: var(--purple); color: white; border-color: var(--purple); }
+
+        /* === CHÂN TRANG === */
+        .page-footer {
+            text-align: center; padding: 25px; color: #64748b; font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 20px;
+        }
+
+        /* === SCROLLBAR TỐI ƯU === */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .logo-text h1 { font-size: 1.3rem; }
+            .toolbar-group { padding: 10px 15px; }
+            #note-content { min-height: 280px; }
+            .note-item:hover { transform: none; border-left: 4px solid var(--primary); }
+            .modal { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NỀN ĐỘNG -->
+    <div class="bg-decoration">
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- MODAL CHIA SẺ -->
+    <div id="shareModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-link"></i> Chia sẻ ghi chú (nhánh)</h3>
+                <button class="modal-close" onclick="closeShareModal()">&times;</button>
+            </div>
+            <div class="note-info">
+                <strong id="shareNoteTitle">-</strong><br>
+                <span id="shareNoteExcerpt" style="font-size:0.85rem;"></span>
+            </div>
+            <div class="share-block">
+                <label class="share-label">Link mã hóa riêng cho ghi chú này:</label>
+                <div class="share-link-group">
+                    <input type="text" id="shareLinkInput" readonly placeholder="Đang tạo link...">
+                    <button onclick="copyShareLink()"><i class="fas fa-copy"></i> Sao chép</button>
+                </div>
+            </div>
+            <p class="modal-note">💡 Link này chứa ID ghi chú, người nhận mở trên trang này sẽ xem được nội dung nếu có dữ liệu hoặc bạn gửi kèm.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- LOGO -->
+        <div class="logo-wrap">
+            <a href="./" class="logo" aria-label="Trang chủ Trình Ghi Chú">
+                <div class="logo-img">
+                    <!-- Thay bằng ảnh của bạn: <img src="logo.png" alt="Logo" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"> -->
+                    <i class="fas fa-feather-alt"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Trình Ghi Chú Trực Tuyến</h1>
+                    <p>Viết — Lưu — Chia sẻ theo nhánh</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- TIÊU ĐỀ TRANG -->
+        <header class="page-header">
+            <h2>Công cụ soạn thảo & lưu trữ hoàn toàn miễn phí</h2>
+            <p>Không cần đăng ký, dữ liệu lưu ngay trên máy bạn. Tạo từng nhánh để quản lý dễ dàng và chia sẻ bằng link riêng.</p>
+        </header>
+
+        <!-- KHUNG SOẠN THẢO -->
+        <main class="note-wrapper" role="main">
+            <!-- NHÓM: TẠO & LƯU -->
+            <div class="toolbar-group">
+                <span class="group-label">Tác vụ chính</span>
+                <div class="toolbar">
+                    <button onclick="newNote()"><i class="fas fa-plus"></i> Ghi chú mới</button>
+                    <button onclick="saveNote()" class="btn-success"><i class="fas fa-save"></i> Lưu nhánh</button>
+                    <button onclick="deleteNote()" class="btn-danger"><i class="fas fa-trash"></i> Xóa nhánh</button>
+                </div>
+            </div>
+
+            <!-- NHÓM: DỮ LIỆU & CHIA SẺ -->
+            <div class="toolbar-group">
+                <span class="group-label">Dữ liệu & Chia sẻ</span>
+                <div class="toolbar">
+                    <button onclick="exportNote()"><i class="fas fa-download"></i> Xuất file</button>
+                    <label class="btn-import">
+                        <i class="fas fa-upload"></i> Nhập file
+                        <input type="file" accept=".txt,.json" onchange="importNote(event)">
+                    </label>
+                    <button onclick="shareCurrentNote()" class="btn-share"><i class="fas fa-share-alt"></i> Chia sẻ link</button>
+                </div>
+            </div>
+
+            <!-- NHÓM: SẮP XẾP -->
+            <div class="toolbar-group">
+                <span class="group-label">Sắp xếp nhánh</span>
+                <div class="toolbar">
+                    <select id="sort-select" onchange="renderNotes()">
+                        <option value="updated">Mới nhất trước</option>
+                        <option value="title">Theo tiêu đề A-Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="note-area">
+                <label for="note-title" class="sr-only">Tiêu đề ghi chú</label>
+                <input type="text" id="note-title" placeholder="Nhập tiêu đề ghi chú (nhánh)...">
+                <label for="note-content" class="sr-only">Nội dung ghi chú</label>
+                <textarea id="note-content" placeholder="Bắt đầu viết nội dung nhánh này..."></textarea>
+            </div>
+
+            <div class="status-bar">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span id="status-text">Sẵn sàng</span>
+                </div>
+                <div id="char-count">0 ký tự</div>
+            </div>
+        </main>
+
+        <!-- DANH SÁCH NHÁNH -->
+        <section class="notes-list-container" aria-labelledby="list-heading">
+            <div class="list-header">
+                <h2 id="list-heading"><i class="fas fa-code-branch"></i> Danh sách nhánh ghi chú</h2>
+                <span id="note-count">0 nhánh</span>
+            </div>
+            <div id="notes-list"></div>
+        </section>
+
+        <!-- CHÂN TRANG -->
+        <footer class="page-footer">
+            <p>© 2026 Trình Ghi Chú Trực Tuyến — Dữ liệu lưu trữ cục bộ trên trình duyệt, an toàn và nhanh chóng.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
